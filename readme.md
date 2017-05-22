@@ -1,10 +1,11 @@
 # Tic Tac Toe
 Clasic TicTacToe game more info: https://en.wikipedia.org/wiki/Tic-tac-toe
 
-![Launch](/screens/1.png =250x)
-![Menu](/screens/2.png =250x)
-![Game](/screens/3.png =250x)
-![Menu](/screens/4.png =250x)
+<img src="/screens/1.png" width="100">
+<img src="/screens/2.png" width="100">
+<img src="/screens/3.png" width="100">
+<img src="/screens/4.png" width="100">
+ 
 
 ## History
 Altice/Orange certification basic android development final proyect
