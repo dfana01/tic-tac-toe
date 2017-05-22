@@ -1,10 +1,7 @@
 # Tic Tac Toe
 Clasic TicTacToe game more info: https://en.wikipedia.org/wiki/Tic-tac-toe
 
-<img src="/screens/1.png" width="100">
-<img src="/screens/2.png" width="100">
-<img src="/screens/3.png" width="100">
-<img src="/screens/4.png" width="100">
+<img src="/screens/1.png" width="100" ><img src="/screens/2.png" width="100"><img src="/screens/3.png" width="100"><img src="/screens/4.png" width="100">
  
 
 ## History
