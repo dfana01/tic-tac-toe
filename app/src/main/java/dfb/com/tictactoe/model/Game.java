@@ -1,6 +1,15 @@
 package dfb.com.tictactoe.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 import java.util.Set;
+import java.util.TreeMap;
 
 /**
  * Created by Dante on 5/19/2017.
@@ -20,37 +29,66 @@ public class Game {
     private Player currentPlayer;
     private Player winner;
 
-    private final Move [][] winningCombinations = {
-            {new Move(0),new Move(1),new Move(2)},
-            {new Move(3),new Move(4),new Move(5)},
-            {new Move(6),new Move(7),new Move(8)},
-            {new Move(0),new Move(3),new Move(6)},
-            {new Move(1),new Move(4),new Move(7)},
-            {new Move(2),new Move(5),new Move(8)},
-            {new Move(0),new Move(4),new Move(8)},
-            {new Move(2),new Move(4),new Move(6)}};
+    private int playModality;
 
-    public Game(){
-        init();
+    private TreeMap<Integer, Move> emptyPositions;
+
+    private Move [][] winningCombinations;
+
+    public Game(int playModality){
+        init(playModality);
     }
 
-    private void init(){
+    private void init(int playModality){
+        this.playModality = playModality;
         players = new Player[2];
         players[0] = new Player(MARK_X);
         players[1] = new Player(MARK_O);
         board = new Board();
         currentPlayer = players[0];
+        initPosition();
     }
 
+    private void initPosition(){
+        emptyPositions = new TreeMap<Integer, Move>();
+        for(int i = 0; i <= 8; i++){
+            emptyPositions.put(i,new Move(i));
+        }
+        winningCombinations= new Move[][]{
+                {emptyPositions.get(0),emptyPositions.get(1),emptyPositions.get(2)},
+                {emptyPositions.get(3),emptyPositions.get(4),emptyPositions.get(5)},
+                {emptyPositions.get(6),emptyPositions.get(7),emptyPositions.get(8)},
+                {emptyPositions.get(0),emptyPositions.get(3),emptyPositions.get(6)},
+                {emptyPositions.get(1),emptyPositions.get(4),emptyPositions.get(7)},
+                {emptyPositions.get(2),emptyPositions.get(5),emptyPositions.get(8)},
+                {emptyPositions.get(0),emptyPositions.get(4),emptyPositions.get(8)},
+                {emptyPositions.get(2),emptyPositions.get(4),emptyPositions.get(6)}};
+    }
+
+
     public boolean play(int position){
-        Move move = new Move(position, currentPlayer.getMark());
-        if ((!board.move(move)) || winner != null ) return false;
+        Move move = emptyPositions.containsKey(position)? emptyPositions.get(position): null;
+        if ( move == null) return false;
+
+        move.setMark(currentPlayer.getMark());
+        if (!board.move(move) || winner != null ) return false;
+
         currentPlayer.move(move);
-        switchPlayer();
+        emptyPositions.remove(position);
         checkWinner();
+        switchPlayer();
+
         return true;
     }
 
+    public boolean playUi(){
+        if(playModality == SINGLE_PLAYER && currentPlayer == players[1] && !emptyPositions.isEmpty()) {
+            LinkedList keySet = new LinkedList(emptyPositions.keySet());
+            Collections.shuffle(keySet);
+            return play(emptyPositions.get(keySet.getFirst()).getPosition());
+        }
+        return false;
+    }
 
     private void switchPlayer() {
         if (players[0] != currentPlayer)
@@ -91,6 +129,12 @@ public class Game {
     }
 
     public void startNewGame(){
+        for (Move move: board.getPlays()) {
+            if(move == null)
+                continue;
+            move.setMark("");
+            emptyPositions.put(move.getPosition(),move);
+        }
         board.reset();
         currentPlayer = players[0];
         winner = null;
@@ -110,6 +154,8 @@ public class Game {
     public Player getWinner(){
         return winner;
     }
+
+    public Player getCurrentPlayer(){ return currentPlayer; }
 
     public Move[] getPlays(){
         return board.getPlays();

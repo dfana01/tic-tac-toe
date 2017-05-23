@@ -16,9 +16,10 @@ public class GameViewModel extends BaseObservable {
 
     private Game game;
 
-    public GameViewModel(){
-        game = new Game();
+    public GameViewModel(int gameModality){
+        game = new Game(gameModality);
     }
+
 
     @Bindable
     public Player getPlayer1(){
@@ -44,7 +45,7 @@ public class GameViewModel extends BaseObservable {
         } else if(game.isDraw()){
             sb.append("Draw!");
         } else{
-            sb.append("...");
+            sb.append(game.getCurrentPlayer().getMark()).append(" Turn ");
         }
         return sb.toString();
     }
@@ -54,6 +55,8 @@ public class GameViewModel extends BaseObservable {
             notifyChange();
             game.startNewGame();
         }else if (game.play(position)) {
+            notifyChange();
+            game.playUi();
             notifyChange();
             return true;
         }

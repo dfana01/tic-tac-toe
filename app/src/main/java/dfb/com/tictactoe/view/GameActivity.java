@@ -13,25 +13,31 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import dfb.com.tictactoe.constants.Keys;
 import dfb.com.tictactoe.databinding.ActivityGameBinding;
 import dfb.com.tictactoe.R;
+import dfb.com.tictactoe.model.Game;
 import dfb.com.tictactoe.viewmodel.GameViewModel;
+
 
 public class GameActivity extends Activity {
 
     private GameViewModel gameViewModel;
     private ActivityGameBinding gameActivityBiding;
+    private int gameModality = Game.MULTI_PLAYER;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Intent intent = getIntent();
+        if (intent.hasExtra(Keys.KEY_GAME_MODALITY))
+            gameModality = getIntent().getIntExtra(Keys.KEY_GAME_MODALITY, gameModality);
         initDataBinding();
     }
 
     private void initDataBinding() {
         gameActivityBiding = DataBindingUtil.setContentView(this, R.layout.activity_game);
-        gameViewModel = new GameViewModel();
+        gameViewModel = new GameViewModel(gameModality);
         gameActivityBiding.setMainViewModel(gameViewModel);
         gameActivityBiding.setHandlers(new Handlers());
     }
