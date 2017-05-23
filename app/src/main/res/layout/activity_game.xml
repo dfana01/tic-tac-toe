@@ -87,7 +87,7 @@
                     android:layout_column="1"
                     android:gravity="center_horizontal|center_vertical"
                     android:text="@{mainViewModel.getPlays()[0].getMark()}"
-                    android:textColor="@{}"
+                    android:textColor="@android:color/white"
                     android:textSize="60sp"
                     android:onClick="@{(v) -> handlers.onPlay(v, 0)}"/>
 
