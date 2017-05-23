@@ -31,7 +31,7 @@ public class Game {
 
     private int playModality;
 
-    private TreeMap<Integer, Move> emptyPositions;
+    private Map<Integer, Move> emptyPositions;
 
     private Move [][] winningCombinations;
 
@@ -50,7 +50,7 @@ public class Game {
     }
 
     private void initPosition(){
-        emptyPositions = new TreeMap<Integer, Move>();
+        emptyPositions = new HashMap<Integer, Move>();
         for(int i = 0; i <= 8; i++){
             emptyPositions.put(i,new Move(i));
         }
