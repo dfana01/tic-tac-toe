@@ -54,6 +54,7 @@ public class GameActivity extends Activity {
     public class Handlers{
 
         public void onClickQuite(View view){
+            gameViewModel.reset();
             startActivity(new Intent(view.getContext(), MainActivity.class));
         }
 
@@ -68,6 +69,7 @@ public class GameActivity extends Activity {
         }
 
         public void onClickGoToMenu(View view){
+            gameViewModel.reset();
             startActivity(new Intent(view.getContext(), MainActivity.class));
         }
 

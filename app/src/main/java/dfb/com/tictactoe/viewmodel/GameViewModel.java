@@ -17,7 +17,7 @@ public class GameViewModel extends BaseObservable {
     private Game game;
 
     public GameViewModel(int gameModality){
-        game = new Game(gameModality);
+        game = Game.getInstance(gameModality);
     }
 
 

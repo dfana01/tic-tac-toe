@@ -35,8 +35,17 @@ public class Game {
 
     private Move [][] winningCombinations;
 
-    public Game(int playModality){
+    private static Game instance;
+
+    private Game(int playModality){
         init(playModality);
+    }
+
+    public static Game getInstance(int playModality){
+        if(!(instance instanceof Game)){
+            instance = new Game(playModality);
+        }
+        return instance;
     }
 
     private void init(int playModality){
