@@ -25,9 +25,9 @@
         android:paddingBottom="30dp"
         android:weightSum="100">
         <LinearLayout
-            android:layout_weight="20"
+            android:layout_weight="10"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:gravity="center"
             android:weightSum="100">
             <ImageButton
@@ -62,7 +62,7 @@
         <TextView
             android:layout_weight="10"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:text="@{mainViewModel.message}"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -70,34 +70,40 @@
             android:textColor="@android:color/black"
             android:padding="5dp"/>
         <TableLayout
-            android:layout_weight="50"
+            android:layout_weight="60"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:background="@drawable/shadown"
-            android:padding="15dp"
-            android:gravity="center">
+            android:weightSum="100"
+            android:padding="15dp">
             <TableRow
+                android:layout_weight="33"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:gravity="center">
+                android:padding="0dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:weightSum="99">
                 <TextView
+                    android:layout_weight="33"
                     android:id="@+id/pos_0"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_column="1"
                     android:gravity="center_horizontal|center_vertical"
                     android:text="@{mainViewModel.getPlays()[0].getMark()}"
                     android:textColor="@android:color/white"
-                    android:textSize="60sp"
+                    android:textSize="40sp"
                     android:onClick="@{(v) -> handlers.onPlay(v, 0)}"/>
 
                 <TextView
                     android:id="@+id/pos_1"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="33"
                     android:layout_column="2"
                     android:gravity="center_horizontal|center_vertical"
-                    android:textSize="60sp"
+                    android:textSize="40sp"
                     android:textColor="@android:color/white"
                     android:text="@{mainViewModel.getPlays()[1].getMark()}"
                     android:background="@drawable/border_left_right"
@@ -105,85 +111,96 @@
 
                 <TextView
                     android:id="@+id/pos_2"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
+                    android:layout_weight="33"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_column="3"
                     android:gravity="center_horizontal|center_vertical"
-                    android:textSize="60sp"
+                    android:textSize="40sp"
                     android:textColor="@android:color/white"
                     android:text="@{mainViewModel.getPlays()[2].getMark()}"
                     android:onClick="@{(v) -> handlers.onPlay(v, 2)}"/>
             </TableRow>
             <TableRow
+                android:layout_weight="33"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:gravity="center">
+                android:gravity="center"
+                android:weightSum="99">
                 <TextView
+                    android:layout_weight="33"
                     android:id="@+id/pos_3"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_column="1"
                     android:gravity="center_horizontal|center_vertical"
-                    android:textSize="60sp"
+                    android:textSize="40sp"
                     android:textColor="@android:color/white"
                     android:text="@{mainViewModel.getPlays()[3].getMark()}"
                     android:background="@drawable/border_top_botton"
                     android:onClick="@{(v) -> handlers.onPlay(v, 3)}"/>
                 <TextView
                     android:id="@+id/pos_4"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
+                    android:layout_weight="33"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_column="2"
                     android:gravity="center_horizontal|center_vertical"
-                    android:textSize="60sp"
+                    android:textSize="40sp"
                     android:textColor="@android:color/white"
                     android:text="@{mainViewModel.getPlays()[4].getMark()}"
                     android:background="@drawable/border"
                     android:onClick="@{(v) -> handlers.onPlay(v, 4)}"/>
                 <TextView
+                    android:layout_weight="33"
                     android:id="@+id/pos_5"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_column="3"
                     android:gravity="center_horizontal|center_vertical"
-                    android:textSize="60sp"
+                    android:textSize="40sp"
                     android:textColor="@android:color/white"
                     android:text="@{mainViewModel.getPlays()[5].getMark()}"
                     android:background="@drawable/border_top_botton"
                     android:onClick="@{(v) -> handlers.onPlay(v, 5)}"/>
             </TableRow>
             <TableRow
+                android:layout_weight="33"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:gravity="center">
+                android:gravity="center"
+                android:weightSum="99">
                 <TextView
+                    android:layout_weight="33"
                     android:id="@+id/pos_6"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_column="1"
                     android:gravity="center_horizontal|center_vertical"
-                    android:textSize="60sp"
+                    android:textSize="40sp"
                     android:textColor="@android:color/white"
                     android:text="@{mainViewModel.getPlays()[6].getMark()}"
                     android:onClick="@{(v) -> handlers.onPlay(v, 6)}"/>
                 <TextView
+                    android:layout_weight="33"
                     android:id="@+id/pos_7"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_column="2"
                     android:gravity="center_horizontal|center_vertical"
-                    android:textSize="60sp"
+                    android:textSize="40sp"
                     android:textColor="@android:color/white"
                     android:text="@{mainViewModel.getPlays()[7].getMark()}"
                     android:background="@drawable/border_left_right"
                     android:onClick="@{(v) -> handlers.onPlay(v, 7)}"/>
                 <TextView
+                    android:layout_weight="33"
                     android:id="@+id/pos_8"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_column="3"
                     android:gravity="center_horizontal|center_vertical"
-                    android:textSize="60sp"
+                    android:textSize="40sp"
                     android:textColor="@android:color/white"
                     android:text="@{mainViewModel.getPlays()[8].getMark()}"
                     android:onClick="@{(v) -> handlers.onPlay(v, 8)}"/>
@@ -193,7 +210,7 @@
             android:layout_marginTop="10dp"
             android:layout_weight="20"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:orientation="horizontal"
             android:background="@drawable/border"
             android:gravity="center"
