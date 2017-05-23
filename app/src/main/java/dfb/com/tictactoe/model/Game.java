@@ -44,6 +44,8 @@ public class Game {
     public static Game getInstance(int playModality){
         if(!(instance instanceof Game)){
             instance = new Game(playModality);
+        }else{
+            instance.playModality = playModality;
         }
         return instance;
     }
