@@ -17,6 +17,7 @@ import android.view.animation.LinearInterpolator;
 import dfb.com.tictactoe.R;
 import dfb.com.tictactoe.constants.Keys;
 import dfb.com.tictactoe.model.Game;
+import dfb.com.tictactoe.viewmodel.GameViewModel;
 
 public class MainActivity extends Activity implements View.OnClickListener{
 

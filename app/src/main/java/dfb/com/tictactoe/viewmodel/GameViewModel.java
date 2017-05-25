@@ -20,7 +20,6 @@ public class GameViewModel extends BaseObservable {
         game = Game.getInstance(gameModality);
     }
 
-
     @Bindable
     public Player getPlayer1(){
         return game.getPlayer1();

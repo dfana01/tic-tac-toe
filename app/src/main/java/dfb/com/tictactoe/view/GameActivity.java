@@ -5,10 +5,8 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.transition.Fade;
-import android.transition.Scene;
 import android.transition.TransitionManager;
 import android.transition.TransitionSet;
 import android.view.View;
@@ -31,13 +29,13 @@ public class GameActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        init();
+    }
+
+    private void init() {
         Intent intent = getIntent();
         if (intent.hasExtra(Keys.KEY_GAME_MODALITY))
             gameModality = getIntent().getIntExtra(Keys.KEY_GAME_MODALITY, gameModality);
-        initDataBinding();
-    }
-
-    private void initDataBinding() {
         gameActivityBiding = DataBindingUtil.setContentView(this, R.layout.activity_game);
         gameViewModel = new GameViewModel(gameModality);
         gameActivityBiding.setMainViewModel(gameViewModel);
@@ -51,6 +49,12 @@ public class GameActivity extends Activity {
                     .setInterpolator(new LinearOutSlowInInterpolator());
             TransitionManager.beginDelayedTransition(lyt, set);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        gameViewModel.reset();
     }
 
     public class Handlers{
